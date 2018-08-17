@@ -367,6 +367,17 @@ a=rtpmap:0 PCMU/8000
     alias :receive_100 :receive_trying
 
     #
+    # Sets an expectation for a SIP 407 message from the remote party
+    #
+    # @param [Hash] opts A set of options to modify the expectation
+    # @option opts [true, false] :optional Whether or not receipt of the message is optional. Defaults to true.
+    #
+    def proxy_auth(opts = {})
+      handle_response 407, opts
+    end
+    alias :receive_407 :proxy_auth
+
+    #
     # Sets an expectation for a SIP 180 message from the remote party
     #
     # @param [Hash] opts A set of options to modify the expectation
